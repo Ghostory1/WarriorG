@@ -1,6 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 using UnrealBuildTool;
+using UnrealBuildTool.Rules;
 
 public class WarriorG : ModuleRules
 {
@@ -9,7 +10,15 @@ public class WarriorG : ModuleRules
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicIncludePaths.AddRange(new string[] { "WarriorG" });
-        PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput", "GameplayTags" });
+        PublicDependencyModuleNames.AddRange(new string[] { 
+			"Core", 
+			"CoreUObject", 
+			"Engine", 
+			"InputCore", 
+			"EnhancedInput", 
+			"GameplayTags",
+            "GameplayTasks",
+        });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
