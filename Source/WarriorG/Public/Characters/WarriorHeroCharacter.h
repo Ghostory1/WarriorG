@@ -9,6 +9,7 @@
 
 // 전방선언
 struct FInputActionValue;
+class UHeroCombatComponent;
 /**
  * 
  */
@@ -32,6 +33,8 @@ private:
 	TObjectPtr<class USpringArmComponent> CameraBoom;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera", meta = (AllowPrivateAccess = "true"))
 	TObjectPtr<class UCameraComponent> FollowCamera;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	UHeroCombatComponent* HeroCombatComponent;
 #pragma endregion
 
 #pragma region Inputs
@@ -41,4 +44,7 @@ private:
 	void Input_Move(const FInputActionValue& InputActionValue);
 	void Input_Look(const FInputActionValue& InputActionValue);
 #pragma endregion
+
+public:
+	FORCEINLINE UHeroCombatComponent* GetHeroCombatComponent() const { return HeroCombatComponent; }
 };

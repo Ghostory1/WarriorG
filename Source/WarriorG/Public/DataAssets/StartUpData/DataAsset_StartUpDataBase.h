@@ -27,4 +27,5 @@ protected:
 	TArray<TSubclassOf<UWarriorGameplayAbility>> ReactiveAbilities;
 
 	void GrantAbilities(const TArray<TSubclassOf<UWarriorGameplayAbility>>& InAbilitiesToGive, UWarriorAbilitySystemComponent* InASCToGive, int32 ApplyLevel = 1);
+
 };
