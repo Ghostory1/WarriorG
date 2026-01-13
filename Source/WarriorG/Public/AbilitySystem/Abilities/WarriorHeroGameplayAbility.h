@@ -8,7 +8,6 @@
 
 class AWarriorHeroCharacter;
 class AWarriorHeroController;
-class UHeroCombatComponent;
 /**
  * 
  */
@@ -31,5 +30,4 @@ public:
 private:
 	TWeakObjectPtr<AWarriorHeroCharacter> CachedWarriorHeroCharacter;
 	TWeakObjectPtr<AWarriorHeroController> CachedWarriorHeroController;
-	TWeakObjectPtr<AWarriorHeroController> CachedWarriorHeroCombatComponent;
 };
