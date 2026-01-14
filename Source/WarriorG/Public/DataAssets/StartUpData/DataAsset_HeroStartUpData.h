@@ -17,7 +17,7 @@ struct FWarriorHeroAbilitySet
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	TSubclassOf<UWarriorGameplayAbility> AbilityToGrant;
-
+	
 	bool IsValid() const;
 };
 
