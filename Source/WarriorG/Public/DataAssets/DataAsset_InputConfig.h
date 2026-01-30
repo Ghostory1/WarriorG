@@ -7,7 +7,7 @@
 #include "GameplayTagContainer.h"
 #include "DataAsset_InputConfig.generated.h"
 
-
+class UInputMappingContext;
 
 USTRUCT(BlueprintType)
 struct FWarriorInputActionConfig
@@ -36,7 +36,7 @@ class WARRIORG_API UDataAsset_InputConfig : public UDataAsset
 	
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TObjectPtr<class UInputMappingContext> DefaultMappingContext;
+	TObjectPtr<UInputMappingContext> DefaultMappingContext;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (TitleProperty = "InputTag"))
 	TArray<FWarriorInputActionConfig> NativeInputActions;
