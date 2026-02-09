@@ -1,0 +1,44 @@
+// Ghostory All Rights Reserved
+
+
+#include "WarriorFunctionLibrary.h"
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystem/WarriorAbilitySystemComponent.h"
+
+UWarriorAbilitySystemComponent* UWarriorFunctionLibrary::NativeGetWarriorASCFromActor(AActor* InActor)
+{
+    check(InActor);
+    
+    return CastChecked<UWarriorAbilitySystemComponent>(UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InActor));
+}
+
+void UWarriorFunctionLibrary::AddGameplayTagToActorIfNone(AActor* InActor, FGameplayTag TagToAdd)
+{
+    UWarriorAbilitySystemComponent* ASC = NativeGetWarriorASCFromActor(InActor);
+    if (!ASC->HasMatchingGameplayTag(TagToAdd))
+    {
+        // AddLooseGameplayTag : 동일한 태그를 여러 번 추가할 수 없음
+        ASC->AddLooseGameplayTag(TagToAdd);
+    }
+}
+
+void UWarriorFunctionLibrary::RemoveGameplayTagFromActorIfFound(AActor* InActor, FGameplayTag TagToRemove)
+{
+    UWarriorAbilitySystemComponent* ASC = NativeGetWarriorASCFromActor(InActor);
+
+    if (ASC->HasMatchingGameplayTag(TagToRemove))
+    {
+        ASC->RemoveLooseGameplayTag(TagToRemove);
+    }
+}
+
+bool UWarriorFunctionLibrary::NativeDoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck)
+{
+    UWarriorAbilitySystemComponent* ASC = NativeGetWarriorASCFromActor(InActor);
+    return ASC->HasMatchingGameplayTag(TagToCheck);
+}
+
+void UWarriorFunctionLibrary::BP_DoesActorHaveTag(AActor* InActor, FGameplayTag TagToCheck, EWarriorConfirmType& OutConfirmType)
+{
+    OutConfirmType = NativeDoesActorHaveTag(InActor, TagToCheck) ? EWarriorConfirmType::Yes : EWarriorConfirmType::No;
+}
