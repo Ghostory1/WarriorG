@@ -6,6 +6,7 @@
 #include "Characters/WarriorBaseCharacter.h"
 #include "WarriorEnemyCharacter.generated.h"
 
+class UEnemyCombatComponent;
 /**
  * 
  */
@@ -14,4 +15,23 @@ class WARRIORG_API AWarriorEnemyCharacter : public AWarriorBaseCharacter
 {
 	GENERATED_BODY()
 	
+public:
+	AWarriorEnemyCharacter();
+
+protected:
+	//~ Begin APawn Interface.
+	virtual void PossessedBy(AController* NewController) override;
+	//~ End APawn Interface
+
+protected:
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Combat")
+	UEnemyCombatComponent* EnemyCombatComponent;
+
+public:
+	FORCEINLINE UEnemyCombatComponent* GetEnemyCombatComponent() const { return EnemyCombatComponent; }
+
+
+private:
+	void InitEnemyStartUpData();
+
 };
