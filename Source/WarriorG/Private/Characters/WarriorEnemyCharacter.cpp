@@ -26,6 +26,11 @@ AWarriorEnemyCharacter::AWarriorEnemyCharacter()
 
 }
 
+UPawnCombatComponent* AWarriorEnemyCharacter::GetPawnCombatComponent()
+{
+	return EnemyCombatComponent;
+}
+
 void AWarriorEnemyCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);

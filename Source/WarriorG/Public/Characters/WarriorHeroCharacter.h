@@ -20,6 +20,10 @@ class WARRIORG_API AWarriorHeroCharacter : public AWarriorBaseCharacter
 	GENERATED_BODY()
 public:
 	AWarriorHeroCharacter();
+
+	//~ Begin PawnCombatInterface Interface.
+	virtual UPawnCombatComponent* GetPawnCombatComponent() override;
+	//~ End PawnCombatInterface Interface
 protected:
 	//~ Begin APawn Interface.
 	virtual void PossessedBy(AController* NewController) override;
