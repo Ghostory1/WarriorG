@@ -13,6 +13,9 @@ void UPawnCombatComponent::RegisterSpawnedWeapon(FGameplayTag InWeaponTagToRegis
 
     CharacterCarriedWeaponMap.Emplace(InWeaponTagToRegister, InWeaponRegister);
 
+    InWeaponRegister->OnWeaponHitTarget.BindUObject(this, &ThisClass::OnHitTargetActor);
+    InWeaponRegister->OnWeaponPulledFromTarget.BindUObject(this, &ThisClass::OnWeaponPulledFromTargetActor);
+
     if (bRegisterAsEquippedWeapon)
     {
         // 장착되어있으면,
@@ -57,6 +60,14 @@ void UPawnCombatComponent::ToggleWeaponCollision(bool bShouldEnable, EToggleDama
             WeaponToToggle->GetWeaponCollisionBox()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
         }
     }
+}
+
+void UPawnCombatComponent::OnHitTargetActor(AActor* HitActor)
+{
+}
+
+void UPawnCombatComponent::OnWeaponPulledFromTargetActor(AActor* InteractedActor)
+{
 }
 
 // TODO : Handle body collision boxes

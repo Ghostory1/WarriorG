@@ -8,6 +8,9 @@
 
 
 class UBoxComponent;
+
+DECLARE_DELEGATE_OneParam(FOnTargetInteractedDelegate,AActor*)
+
 UCLASS()
 class WARRIORG_API AWarriorWeaponBase : public AActor
 {
@@ -16,6 +19,9 @@ class WARRIORG_API AWarriorWeaponBase : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AWarriorWeaponBase();
+
+	FOnTargetInteractedDelegate OnWeaponHitTarget;
+	FOnTargetInteractedDelegate OnWeaponPulledFromTarget;
 
 protected:
 
